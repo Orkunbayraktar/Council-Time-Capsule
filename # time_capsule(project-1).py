@@ -3,7 +3,7 @@ from PIL import Image
 import os
 
 
-def add_message(message):
+def add_message(messages):
     try:
         current_datetime = datetime.datetime.now()
         text = input("Enter your message: ")
@@ -38,5 +38,36 @@ def add_message(message):
                 print("Image file not found. Message will be saved without an image.")
                 print()        
     
+        print("Select unlock date: ")
+        print()
+        print(f"Current date and time: {current_datetime.strftime('%Y-%m-%d %H:%M')}")
+        print()
 
-            
+        date_time_input = input("Enter date and time (YYYY MM DD HH MM): ")
+        year, month, day, hour, minute = map(int, date_time_input.split())
+        
+        unlock_datetime = datetime.datetime(year, month, day, hour, minute)
+        if unlock_datetime <= current_datetime:
+            print("Error: Unlock date must be in the future!")
+            print()
+            print("Your message was not saved. Please try again.")
+            return
+
+        print(f"Your message is saved until: {unlock_datetime}")    
+        print()
+    except ValueError:
+        print("Invalid input! Please enter valid numbers for date and time.")
+        print()
+        return
+    
+    message = f"{year}-{month:02d}-{day:02d} {hour:02d}:{minute:02d}|{text}|{image_file}"
+    messages.append(message)
+    print()
+    print("Message sealed in time capsule!")
+    print()
+    save_capsule(messages)
+
+    def save_capsule(messages):
+        with open("capsule.txt", "w") as file:
+            for msg in messages:
+                file.write(msg + "\n")
