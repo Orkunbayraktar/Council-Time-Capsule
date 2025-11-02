@@ -106,4 +106,36 @@ def view_unlocked(messages):
             text = parts[1]
             image_file = parts[2] if len(parts) > 2 else ""
 
+            if is_unlocked(date_part):
+                 if image_file:
+                     unlocked.append(f"{text} (image: {image_file})")     
+            else:
+                 unlocked.append(text)
+
+    if unlocked:
+             print("Unlocked Messages:")
+             print()
+             for i, msg in enumerate(unlocked, 1):
+                  print(f"{i}.{msg}")
+                  print()
+         else:
+             print("No messages unlocked yet. Come back later!")
+             print()
+            def main():
+                print("Welcome to Council Time Capsule!")
+                print()
+                messages = load_capsule()
+
+                name_surname = input("Enter your name and surname: ").strip()
+                print()
+
+                while true:
+
+                     print("\n" + "="*30)
+                     print("1. Add message")
+                     print("2. View Unlocked")
+                     print("3. Exit")
+                     print("="*30)
+
+                     choice = input("Choose: ")          
 
