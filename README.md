@@ -40,13 +40,7 @@
 
 ## File Structure
 
-COUNCIL_TIME_CAPSULE/
-│
-├── time_capsule(project-1).py           # Main program (your code)
-├── capsule.txt               # Messages stored here (auto-generated)
-├── capsule_images/           # Saved images (e.g., image_20251103143025.jpg)
-├── requirements.txt          # Pillow dependency
-└── README.md                 # This file
+COUNCIL_TIME_CAPSULE/ │ ├── time_capsule.py # Main program (your code) ├── capsule.txt # Messages stored here (auto-generated) ├── capsule_images/ # Saved images (e.g., image_20251103143025.jpg) ├── requirements.txt # Pillow dependency └── README.md # This file                # This file
 
 ---
 ## How to Run
